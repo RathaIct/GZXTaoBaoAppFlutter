@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_taobao/common/services/address.dart';
-import 'package:quiver/strings.dart';
 import 'dart:math' as math;
 import 'package:url_launcher/url_launcher.dart';
 import 'navigator_utils.dart';
@@ -19,7 +18,7 @@ class CommonUtils {
   static Color string2Color(String colorString) {
     int value = 0x00000000;
 
-    if (isNotEmpty(colorString)) {
+    if (colorString.isNotEmpty) {
       if (colorString[0] == '#') {
         colorString = colorString.substring(1);
       }
@@ -52,7 +51,8 @@ class CommonUtils {
   }
 
   static Color randomColor() {
-    return Color((math.Random().nextDouble() * 0xFFFFFF).toInt() << 0).withOpacity(1.0);
+    return Color((math.Random().nextDouble() * 0xFFFFFF).toInt() << 0)
+        .withOpacity(1.0);
   }
 
   static String removeDecimalZeroFormat(double n) {
@@ -69,7 +69,8 @@ class CommonUtils {
   }
 
   static String getNewsTimeStr(DateTime date) {
-    int subTime = DateTime.now().millisecondsSinceEpoch - date.millisecondsSinceEpoch;
+    int subTime =
+        DateTime.now().millisecondsSinceEpoch - date.millisecondsSinceEpoch;
 
     if (subTime < MILLIS_LIMIT) {
       return "刚刚";
@@ -111,7 +112,8 @@ class CommonUtils {
   }
 
   ///版本更新
-  static Future<Null> showUpdateDialog(BuildContext context, String contentMsg) {
+  static Future<Null> showUpdateDialog(
+      BuildContext context, String contentMsg) {
     return NavigatorUtils.showGSYDialog(
         context: context,
         builder: (BuildContext context) {
@@ -135,7 +137,8 @@ class CommonUtils {
         });
   }
 
-  static Future<Null> showPromptDialog(BuildContext context, String title, String contentMsg) {
+  static Future<Null> showPromptDialog(
+      BuildContext context, String title, String contentMsg) {
     return NavigatorUtils.showGSYDialog(
         context: context,
         builder: (BuildContext context) {

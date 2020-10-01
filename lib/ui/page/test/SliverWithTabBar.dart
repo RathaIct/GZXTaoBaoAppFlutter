@@ -6,7 +6,8 @@ class SliverWithTabBar extends StatefulWidget {
   _SliverWithTabBarState createState() => _SliverWithTabBarState();
 }
 
-class _SliverWithTabBarState extends State<SliverWithTabBar> with SingleTickerProviderStateMixin {
+class _SliverWithTabBarState extends State<SliverWithTabBar>
+    with SingleTickerProviderStateMixin {
   TabController controller;
   var _tabs = ['1', '2', '3'];
 
@@ -23,7 +24,8 @@ class _SliverWithTabBarState extends State<SliverWithTabBar> with SingleTickerPr
         body: DefaultTabController(
           length: _tabs.length, // This is the number of tabs.
           child: NestedScrollView(
-            headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+            headerSliverBuilder:
+                (BuildContext context, bool innerBoxIsScrolled) {
               // These are the slivers that show up in the "outer" scroll view.
               return <Widget>[
                 SliverOverlapAbsorber(
@@ -34,8 +36,9 @@ class _SliverWithTabBarState extends State<SliverWithTabBar> with SingleTickerPr
                   // scroll view thinks it has not been scrolled.
                   // This is not necessary if the "headerSliverBuilder" only builds
                   // widgets that do not overlap the next sliver.
-                  handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
-                  child: SliverSafeArea(
+                  handle:
+                      NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+                  sliver: SliverSafeArea(
                     top: false,
                     sliver: SliverAppBar(
                       title: const Text('Books'),
@@ -46,7 +49,9 @@ class _SliverWithTabBarState extends State<SliverWithTabBar> with SingleTickerPr
                       forceElevated: innerBoxIsScrolled,
                       bottom: TabBar(
                         // These are the widgets to put in each tab in the tab bar.
-                        tabs: _tabs.map((String name) => Tab(text: name)).toList(),
+                        tabs: _tabs
+                            .map((String name) => Tab(text: name))
+                            .toList(),
                       ),
                     ),
                   ),
@@ -77,7 +82,9 @@ class _SliverWithTabBarState extends State<SliverWithTabBar> with SingleTickerPr
                         slivers: <Widget>[
                           SliverOverlapInjector(
                             // This is the flip side of the SliverOverlapAbsorber above.
-                            handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+                            handle:
+                                NestedScrollView.sliverOverlapAbsorberHandleFor(
+                                    context),
                           ),
                           SliverPadding(
                             padding: const EdgeInsets.all(8.0),
@@ -95,8 +102,11 @@ class _SliverWithTabBarState extends State<SliverWithTabBar> with SingleTickerPr
                                   // This builder is called for each child.
                                   // In this example, we just number each list item.
                                   return Container(
-                                      color:
-                                          Color((math.Random().nextDouble() * 0xFFFFFF).toInt() << 0).withOpacity(1.0));
+                                      color: Color((math.Random().nextDouble() *
+                                                      0xFFFFFF)
+                                                  .toInt() <<
+                                              0)
+                                          .withOpacity(1.0));
                                 },
                                 // The childCount of the SliverChildBuilderDelegate
                                 // specifies how many children this inner list

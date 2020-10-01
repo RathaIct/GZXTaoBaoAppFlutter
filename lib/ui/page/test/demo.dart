@@ -32,7 +32,7 @@ class _IndexState extends State<Index> {
               // widgets that do not overlap the next sliver.
               // 交叠减震器，当组件滚动造成交叠、覆盖时，可以增加SliverOverlapAbsorber
               handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
-              child: SliverAppBar(
+              sliver: SliverAppBar(
                 title: const Text('NestedScrollView'),
                 // This is the title in the app bar.
                 pinned: true,
@@ -107,7 +107,8 @@ class _IndexState extends State<Index> {
                       // 增加后，类似clear:both效果，使得布局能顺畅衔接
                       SliverOverlapInjector(
                         // This is the flip side of the SliverOverlapAbsorber above.
-                        handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+                        handle: NestedScrollView.sliverOverlapAbsorberHandleFor(
+                            context),
                       ),
 //                      SearchResultListPage('iphone'),
                       SliverPadding(
@@ -125,7 +126,7 @@ class _IndexState extends State<Index> {
                             (BuildContext context, int index) {
                               // This builder is called for each child.
                               // In this example, we just number each list item.
-                                          return SearchResultListPage('iphone');
+                              return SearchResultListPage('iphone');
 
                               return ListTile(
                                 title: Text('Item $index'),
